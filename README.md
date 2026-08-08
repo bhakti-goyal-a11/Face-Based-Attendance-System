@@ -1,133 +1,143 @@
 # Face-Based-Attendance-System
 
-# 🎯 Face-Based Attendance System (AI/ML + Computer Vision)
+# 🎓 Smart Face-Based Attendance System
 
-An intelligent **Face Recognition-based Attendance System** built using **Python, OpenCV, and Deep Learning concepts**. This project automates attendance marking using real-time facial recognition and provides analytics through visualization and a web dashboard.
+An advanced **AI-powered attendance management system** built using **Python, Streamlit, and Face Recognition**. This project ensures **secure, real-time, and anti-proxy attendance tracking** using facial verification along with role-based dashboards for Admin, Faculty, and Students.
 
-## 🚀 Project Overview
+## 🚀 Features
 
-This system captures live video using a webcam, detects faces, matches them with pre-trained encodings, and automatically marks attendance with timestamps. It also provides insights through visual dashboards and supports a basic **Streamlit web interface**.
+### 🔐 Authentication System
 
-## 🧠 Key Features
+* Secure Login & Registration (Admin / Faculty / Student)
+* Password hashing for security
+* Role-based access control
 
-* 📸 Real-time Face Detection & Recognition
-* 🧾 Automatic Attendance Logging (CSV-based)
-* 🧠 Face Encoding using `face_recognition` library
-* ⏱️ Timestamp-based Attendance Tracking
-* 📊 Attendance Visualization (Matplotlib + Seaborn)
-* 🌐 Streamlit Web App Interface
-* 🔐 Basic User Management System (Login/Register)
-* 📅 Timetable Integration (CSV-based)
+### 👤 Face Recognition
 
-## 🏗️ Tech Stack
+* Student face registration & encoding
+* Real-time face verification using camera
+* Anti-proxy attendance (prevents fake marking)
 
-| Category         | Tools / Libraries   |
-| ---------------- | ------------------- |
-| Language         | Python              |
-| Computer Vision  | OpenCV              |
-| Face Recognition | face_recognition    |
-| Data Handling    | Pandas, NumPy       |
-| Visualization    | Matplotlib, Seaborn |
-| Web App          | Streamlit           |
-| Storage          | CSV Files           |
+### 📸 Smart Attendance
+
+* Face-verified attendance marking
+* Subject-wise and section-wise tracking
+* Duplicate attendance prevention
+* Time-based attendance (only during active class)
+
+### 👨‍🏫 Faculty Panel
+
+* Take attendance with face verification
+* View assigned classes and students
+* Multi-section support (faculty can handle multiple sections)
+* Download section-wise reports
+
+### 👨‍💼 Admin Panel
+
+* Dashboard with analytics
+* Add / Delete users
+* Assign teachers to subjects & sections
+* View full attendance reports
+* Edit timetable dynamically
+* Download CSV reports
+
+### 🎓 Student Panel
+
+* View personal attendance records
+* Face-based attendance marking
+* Subject-wise attendance insights
+* Attendance percentage visualization
+
+### 📊 Analytics & Reports
+
+* Section-wise attendance graphs
+* Subject-wise performance
+* Monthly attendance trends
+* Export reports in CSV format
+
+### 🕘 Timetable Management
+
+* Predefined 9 AM – 5 PM schedule
+* Section-wise timetable
+* Editable by admin
+
+## 🛠️ Tech Stack
+
+* **Frontend/UI:** Streamlit
+* **Backend:** Python
+* **Libraries:**
+
+  * OpenCV
+  * face_recognition
+  * NumPy
+  * Pandas
+  * Plotly
+* **Database:** CSV-based storage
+* **Other:** Pickle (for face encoding storage)
 
 ## 📂 Project Structure
 
 ```
-├── Face Based Attendance System.ipynb   # Main project notebook
-├── faces_data.pkl                      # Face dataset (encoded images)
-├── attendance.csv                      # Attendance records
-├── users.csv                           # User credentials
-├── timetable.csv                       # Class schedule
-├── teachers.csv                        # Faculty-subject mapping
-└── streamlit_app.py                    # Web dashboard (generated in notebook)
+├── app.py                  # Main Streamlit Application
+├── users.csv               # User database
+├── attendance.csv          # Attendance records
+├── timetable.csv           # Class schedule
+├── teachers.csv            # Faculty assignments
+├── faces.pkl               # Face encodings database
 ```
 
-## ⚙️ How It Works
+## ⚙️ Installation & Setup
 
-### 1️⃣ Face Encoding
-
-* Dataset (`faces_data.pkl`) is loaded
-* Faces are converted into numerical encodings
-* Each face is assigned a label
-
-### 2️⃣ Real-Time Recognition
-
-* Webcam captures frames
-* Faces are detected and encoded
-* Compared with stored encodings using distance metrics
-* Best match → Student identified
-
-### 3️⃣ Attendance Logging
-
-* Name, Date, Time, Subject, Section stored in CSV
-* Prevents duplicate entries within session
-
-### 4️⃣ Visualization
-
-* Attendance data plotted using:
-
-  * Count plots
-  * Daily/Student-wise analysis
-
-### 5️⃣ Web Dashboard (Streamlit)
-
-* Login/Register system
-* Attendance viewing
-* Admin control (basic)
-* Timetable integration
-
-## 📊 Sample Output
-
-* ✔️ Recognized Face with Name Label
-* ✔️ Attendance CSV File Generated
-* ✔️ Graph showing attendance distribution
-
-## 🧪 Installation & Setup
-
-### 🔹 Step 1: Clone Repository
+### 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/your-username/face-attendance-system.git
 cd face-attendance-system
 ```
 
-### 🔹 Step 2: Install Dependencies
+### 2️⃣ Install Dependencies
 
 ```bash
-pip install opencv-python numpy pandas matplotlib seaborn face-recognition streamlit
+pip install -r requirements.txt
 ```
 
-### 🔹 Step 3: Run Notebook
+### 3️⃣ Run Application
 
 ```bash
-jupyter notebook
+streamlit run app.py
 ```
 
-### 🔹 Step 4: Run Streamlit App
+## 🔑 Usage
 
-```bash
-streamlit run streamlit_app.py
-```
+### 👨‍💼 Admin
 
-## 📌 Use Cases
+* Register as Admin
+* Manage users and assign teachers
+* View analytics & reports
 
-* 🎓 Colleges & Universities
-* 🏫 Schools
-* 🏢 Office Attendance Systems
-* 🔐 Secure Access Systems
+### 👨‍🏫 Faculty
 
-## ⚠️ Limitations
+* Login using credentials
+* Take attendance via face verification
+* View students & download reports
 
-* Requires good lighting for accurate detection
-* Performance depends on camera quality
-* Basic dataset labeling (auto labels like Person_1, Person_2)
+### 🎓 Student
 
-## 🔮 Future Enhancements
+* Register with face
+* Login using face + password
+* Mark attendance and view reports
 
-* ✅ Deep Learning-based Face Recognition (CNN)
-* ✅ Anti-spoofing Detection
-* ✅ Mask Detection Integration
-* ✅ Cloud Database (Firebase / MongoDB)
-* ✅ Role-based Advanced Admin Panel
-* ✅ Mobile App Integration
+## 🔒 Security Features
+
+* SHA-256 password hashing
+* Face-based identity verification
+* Anti-duplicate attendance logic
+* Role-based access restriction
+
+## 📈 Future Enhancements
+
+* 🔔 Email & WhatsApp notifications
+* 🌐 Cloud database integration (MongoDB / Firebase)
+* 📱 Mobile app version
+* 🧠 AI-based attendance prediction
+* 🛡️ Anti-spoofing (liveness detection)
