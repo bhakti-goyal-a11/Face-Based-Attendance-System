@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Face Attendance System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>🎓 Smart Face Attendance System</h1>
+  <div id="userInfo" class="user-info hidden">
+    <span id="userLabel"></span>
+    <button id="logoutBtn" class="btn btn-ghost">Logout</button>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ================= AUTH VIEW ================= -->
+  <section id="authView" class="card auth-card">
+    <div class="tabs">
+      <button class="tab-btn active" data-mode="login">Login</button>
+      <button class="tab-btn" data-mode="register">Register</button>
+    </div>
+
+    <form id="authForm">
+      <label>Role
+        <select id="authRole">
+          <option value="admin">Admin</option>
+          <option value="faculty">Faculty</option>
+          <option value="student" selected>Student</option>
+        </select>
+      </label>
+
+      <label id="sectionField">Section
+        <select id="authSection">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+      </label>
+
+      <label>Username
+        <input id="authUsername" type="text" required>
+      </label>
+
+      <label>Password
+        <input id="authPassword" type="password" required>
+      </label>
+
+      <div id="faceCaptureBlock" class="face-capture">
+        <p class="hint">Face capture required for students</p>
+        <video id="authVideo" autoplay playsinline></video>
+        <canvas id="authCanvas" class="hidden"></canvas>
+        <div class="capture-row">
+          <button type="button" id="startCamBtn" class="btn">Start Camera</button>
+          <button type="button" id="captureBtn" class="btn">📸 Capture</button>
+        </div>
+        <img id="authPreview" class="preview hidden">
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="authSubmitBtn">Login</button>
+    </form>
+
+    <p id="authMessage" class="message"></p>
+  </section>
+
+  <!-- ================= APP VIEW ================= -->
+  <section id="mainView" class="hidden">
+    <nav id="mainNav" class="nav"></nav>
+
+    <div class="status-row" id="statusRow"></div>
+
+    <div id="viewContent" class="view-content"></div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
